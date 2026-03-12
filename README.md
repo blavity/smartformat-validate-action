@@ -61,12 +61,12 @@ Each run writes a Markdown table to `$GITHUB_STEP_SUMMARY` with per-feed pass/fa
 ```yaml
 jobs:
   deploy:
-    uses: blavity/shared-workflows/.github/workflows/kinsta-deploy.yaml@main
+    uses: blavity/shared-workflows/.github/workflows/kinsta-deploy.yaml@v2
     # ...
 
   rss-smoke-test:
     needs: deploy
-    uses: blavity/shared-workflows/.github/workflows/rss-smoke-test.yaml@main
+    uses: blavity/shared-workflows/.github/workflows/rss-smoke-test.yaml@v2
     with:
       feed_urls: '["https://blavity.com/rss.xml","https://blavity.com/entertainment/rss.xml"]'
 ```
