@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:snf="http://www.smartnews.be/snf">
+  <channel>
+    <title>Test Feed</title>
+    <link>https://example.com</link>
+    <description>A test RSS feed</description>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <snf:logo>
+      <url>https://example.com/logo.png</url>
+    </snf:logo>
+    <item>
+      <title>Article One</title>
+      <link>https://example.com/article-1</link>
+      <guid>https://example.com/article-1</guid>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <description>Short summary of article one.</description>
+      <content:encoded><![CDATA[<p>Full content of article one.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image1.jpg" width="800" height="600"/>
+      <dc:creator>Jane Doe</dc:creator>
+    </item>
+    <item>
+      <title>Article Two</title>
+      <link>https://example.com/article-2</link>
+      <guid>https://example.com/article-2</guid>
+      <pubDate>Mon, 01 Jan 2024 01:00:00 +0000</pubDate>
+      <description>Short summary of article two.</description>
+      <content:encoded><![CDATA[<p>Full content of article two.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image2.jpg" width="800" height="600"/>
+    </item>
+    <item>
+      <title>Article Three</title>
+      <link>https://example.com/article-3</link>
+      <guid>https://example.com/article-3</guid>
+      <pubDate>Mon, 01 Jan 2024 02:00:00 +0000</pubDate>
+      <description>Short summary of article three.</description>
+      <content:encoded><![CDATA[<p>Full content of article three.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image3.jpg" width="800" height="600"/>
+    </item>
+    <item>
+      <title>Article Four</title>
+      <link>https://example.com/article-4</link>
+      <guid>https://example.com/article-4</guid>
+      <pubDate>Mon, 01 Jan 2024 03:00:00 +0000</pubDate>
+      <description>Short summary of article four.</description>
+      <content:encoded><![CDATA[<p>Full content of article four.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image4.jpg" width="800" height="600"/>
+    </item>
+    <item>
+      <title>Article Five</title>
+      <link>https://example.com/article-5</link>
+      <guid>https://example.com/article-5</guid>
+      <pubDate>Mon, 01 Jan 2024 04:00:00 +0000</pubDate>
+      <description>Short summary of article five.</description>
+      <content:encoded><![CDATA[<p>Full content of article five.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image5.jpg" width="800" height="600"/>
+    </item>
+  </channel>
+</rss>

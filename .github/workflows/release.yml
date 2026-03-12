@@ -1,0 +1,34 @@
+# Release workflow
+#
+# Triggered by semver tags pushed by release-please (e.g., v1.2.3).
+# release-please already creates the GitHub Release; this job only
+# maintains the floating major-version tag (v1 → latest v1.x.y).
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  move-major-tag:
+    name: Move floating major tag
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move floating major tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          MAJOR=$(echo "$TAG" | sed 's/\(v[0-9]*\)\..*/\1/')
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -fa "$MAJOR" -m "Update $MAJOR to $TAG"
+          git push origin "$MAJOR" --force

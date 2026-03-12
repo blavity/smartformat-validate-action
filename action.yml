@@ -1,0 +1,53 @@
+name: SmartFormat Feed Validator
+description: Validate RSS feeds against the SmartNews SmartFormat v2.1 specification.
+author: Blavity, Inc.
+
+branding:
+  icon: rss
+  color: orange
+
+inputs:
+  feed_urls:
+    description: >
+      JSON array of RSS feed URLs to validate.
+      Example: '["https://example.com/rss.xml","https://example.com/tech/rss.xml"]'
+    required: true
+  min_item_count:
+    description: Minimum number of <item> elements required per feed.
+    required: false
+    default: "5"
+  max_age_hours:
+    description: >
+      Maximum age (in hours) for <lastBuildDate> before a staleness warning is emitted.
+      Set to 0 to disable the check.
+    required: false
+    default: "48"
+  require_snf_namespace:
+    description: >
+      Require the SmartNews snf: namespace declaration
+      (xmlns:snf="http://www.smartnews.be/snf") on the <rss> element.
+    required: false
+    default: "true"
+
+outputs:
+  result:
+    description: >
+      Overall result: "pass" if all hard checks passed, "fail" if any hard check failed.
+  feeds_passed:
+    description: Number of feeds that passed all hard checks.
+  feeds_failed:
+    description: Number of feeds that failed one or more hard checks.
+
+runs:
+  using: composite
+  steps:
+    - name: Validate SmartFormat feeds
+      shell: bash
+      env:
+        INPUT_FEED_URLS: ${{ inputs.feed_urls }}
+        INPUT_MIN_ITEM_COUNT: ${{ inputs.min_item_count }}
+        INPUT_MAX_AGE_HOURS: ${{ inputs.max_age_hours }}
+        INPUT_REQUIRE_SNF_NAMESPACE: ${{ inputs.require_snf_namespace }}
+        GITHUB_OUTPUT: ${{ env.GITHUB_OUTPUT }}
+        GITHUB_STEP_SUMMARY: ${{ env.GITHUB_STEP_SUMMARY }}
+      run: python3 "${{ github.action_path }}/validate.py"

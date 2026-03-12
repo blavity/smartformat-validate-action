@@ -1,0 +1,15 @@
+[project]
+name = "smartformat-validate-action"
+version = "0.1.0"
+description = "Validate RSS feeds against the SmartNews SmartFormat v2.1 specification."
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "flake8>=7.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

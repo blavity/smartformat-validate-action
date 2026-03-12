@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:media="http://search.yahoo.com/mrss/">
+  <!-- No snf: namespace declared -->
+  <channel>
+    <title>No Namespace Feed</title>
+    <link>https://example.com</link>
+    <description>Feed without the snf namespace</description>
+    <item>
+      <title>Article One</title>
+      <link>https://example.com/article-1</link>
+      <guid>https://example.com/article-1</guid>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>Full content.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image1.jpg"/>
+    </item>
+    <item>
+      <title>Article Two</title>
+      <link>https://example.com/article-2</link>
+      <guid>https://example.com/article-2</guid>
+      <pubDate>Mon, 01 Jan 2024 01:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>Full content.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image2.jpg"/>
+    </item>
+    <item>
+      <title>Article Three</title>
+      <link>https://example.com/article-3</link>
+      <guid>https://example.com/article-3</guid>
+      <pubDate>Mon, 01 Jan 2024 02:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>Full content.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image3.jpg"/>
+    </item>
+    <item>
+      <title>Article Four</title>
+      <link>https://example.com/article-4</link>
+      <guid>https://example.com/article-4</guid>
+      <pubDate>Mon, 01 Jan 2024 03:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>Full content.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image4.jpg"/>
+    </item>
+    <item>
+      <title>Article Five</title>
+      <link>https://example.com/article-5</link>
+      <guid>https://example.com/article-5</guid>
+      <pubDate>Mon, 01 Jan 2024 04:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p>Full content.</p>]]></content:encoded>
+      <media:thumbnail url="https://example.com/image5.jpg"/>
+    </item>
+  </channel>
+</rss>
