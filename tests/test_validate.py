@@ -5,8 +5,8 @@ Tests use local XML fixtures (no network required) by monkey-patching
 validate.fetch_feed to return fixture bytes directly.
 """
 
-import sys
 import pathlib
+import sys
 
 # Make the repo root importable
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))

@@ -24,8 +24,11 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Lint (flake8)
-        run: uv run flake8 validate.py tests/
+      - name: Lint (ruff)
+        run: uv run ruff check validate.py tests/
+
+      - name: Format check (ruff)
+        run: uv run ruff format --check validate.py tests/
 
       - name: Test (pytest)
         run: uv run pytest tests/ -v
