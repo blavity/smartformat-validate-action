@@ -79,6 +79,10 @@ Pin to a major tag (`@v1`) for stability. See [releases](https://github.com/blav
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Trademarks
+
+SmartNews and SmartFormat are trademarks or registered trademarks of SmartNews, Inc. Blavity, Inc. is not affiliated with, endorsed by, or sponsored by SmartNews, Inc. All other trademarks are the property of their respective owners.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
