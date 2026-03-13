@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- release-please-start-changelog -->
 
+## [1.1.1](https://github.com/blavity/smartformat-validate-action/compare/v1.1.0...v1.1.1) (2026-03-12)
+
+
+### Miscellaneous
+
+* **lint:** replace flake8 with ruff for lint and format ([abbe478](https://github.com/blavity/smartformat-validate-action/commit/abbe478475499799f9630bfd3589cbb2c9739a28))
+
 ## [1.1.0](https://github.com/blavity/smartformat-validate-action/compare/v1.0.0...v1.1.0) (2026-03-12)
 
 
