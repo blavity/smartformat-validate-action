@@ -21,10 +21,12 @@ uv sync
 uv run pytest tests/ -v
 ```
 
-### Linting
+### Linting and formatting
 
 ```bash
-uv run flake8 validate.py tests/
+uv run ruff check validate.py tests/          # lint
+uv run ruff format validate.py tests/         # format (auto-fix)
+uv run ruff format --check validate.py tests/ # format check only (CI mode)
 ```
 
 ### Running the validator locally
@@ -36,6 +38,15 @@ INPUT_MAX_AGE_HOURS=48 \
 INPUT_REQUIRE_SNF_NAMESPACE=true \
   uv run python validate.py
 ```
+
+## Submitting changes
+
+All changes go through a pull request — do not push directly to `main`.
+
+1. Create a branch: `git checkout -b type/short-description`
+2. Make your changes and ensure lint and tests pass locally (see above).
+3. Open a PR against `main`.
+4. A maintainer will review and merge.
 
 ## Commit style
 
