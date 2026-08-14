@@ -6,9 +6,9 @@
   extends: ["github>blavity/renovate-config"],
   packageRules: [
     {
-      // Group Python dev dependency updates
-      matchManagers: ["uv"],
-      groupName: "python-dev-deps",
+      // Group Python dependencies
+      matchManagers: ["pip_requirements","pip-compile","pipenv","poetry","uv"],
+      groupName: "python-dependencies",
     }
   ]
 }
