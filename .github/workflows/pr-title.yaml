@@ -1,40 +1,18 @@
-name: PR Title Lint
+# Thin caller so the check context matches every other repo in the org:
+# `lint / Lint PR title` (this job's id + the called job's name). A single
+# inlined job would emit just `Lint PR title`, which is a different required
+# status check — and a required context that never appears blocks every PR.
 
-# Inlined rather than calling blavity/shared-workflows' pr-title-lint reusable:
-# this repository is PUBLIC and shared-workflows is PRIVATE, and a public repo
-# cannot consume a private repo's reusable workflow. Attempting it does not
-# produce a helpful error — the workflow file is rejected outright, yielding a
-# zero-job startup failure attributed to `push`, with the file path shown
-# instead of the workflow name and NO check run created at all.
-#
-# Behaviour matches the shared reusable at pr-title-lint-v1.3.0: the same
-# action at the same pinned SHA, scope optional and unrestricted. The check
-# context is `Lint PR title` (the job name) rather than the reusable's
-# `lint / Lint PR title` — that matters when adding it to required status
-# checks. cms-mu-plugins uses this same shape for the same reason.
-#
-# Why it matters here: release-please reads COMMIT SUBJECTS on the default
-# branch, and the squash subject is the PR title
-# (squash_merge_commit_title = PR_TITLE, org-wide since platform#2042).
+name: PR Title Lint
 
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened, ready_for_review]
 
-permissions:
-  pull-requests: read
+permissions: {}
 
 jobs:
   lint:
-    name: Lint PR title
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
     permissions:
       pull-requests: read
-    steps:
-      - name: Check PR title
-        uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          requireScope: false
+    uses: ./.github/workflows/pr-title-lint-local.yaml
