@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: smartformat-validate-action
+  description: >-
+    GitHub Action to validate RSS feeds against the SmartNews SmartFormat v2.1
+    specification.
+  annotations:
+    github.com/project-slug: blavity/smartformat-validate-action
+  tags:
+    - github-actions
+    - rss
+    - smartformat
+    - validation
+spec:
+  type: tool
+  lifecycle: production
+  owner: engineering
