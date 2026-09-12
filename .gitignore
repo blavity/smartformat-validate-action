@@ -24,6 +24,5 @@ coverage.xml
 .claude/
 .codex/
 .opencode/
-.specify/*
-!.specify/memory/
+.specify/**
 !.specify/memory/constitution.md

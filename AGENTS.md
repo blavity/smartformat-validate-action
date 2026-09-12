@@ -25,8 +25,8 @@ tests/         — pytest + XML fixtures
 Rules:
 - `action.yml` inputs/outputs are a public API — removals and renames are
   BREAKING CHANGES (Principle II).
-- Do **not** add internal fleet files (`catalog-info.yaml`, `.governance/`,
-  org-specific agent bundles) — this is a **public** OSS repo (Principle IX).
+- Do **not** add private host-organization registration or policy-sync
+  artifacts (Principle IX). This is a **public** OSS repo.
 
 ## Toolchain
 
@@ -65,12 +65,12 @@ A human maintainer must approve before merge.
 
 - Changing `action.yml` inputs or outputs
 - Adding runtime Python dependencies
-- Adding files that register this repo in a host org's internal catalog,
-  governance bundle, or fleet inventory
+- Adding private host-organization registration or policy-sync metadata
 - Ambiguous requirements
 - Non-trivial pre-existing CI failures
 
 ## What this repo does not have
 
-No Backstage catalog, no governance manifest sync, no org-internal CI secrets.
-If a task assumes otherwise, stop — those belong in private/platform repos.
+No host-organization policy bundles, private inventory metadata, or repository
+secrets beyond the default `GITHUB_TOKEN` in CI. If a task assumes otherwise,
+stop and confirm with a maintainer.

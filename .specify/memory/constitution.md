@@ -2,8 +2,7 @@
 SYNC IMPACT REPORT
 ==================
 Version change: (none) → 1.0.0
-Added sections: initial ratification — adapted from blavity/do-app-action constitution
-  for this Python composite GitHub Action.
+Added sections: initial ratification for this public Python composite action.
 Templates requiring updates: none (no .specify/templates in this repo yet)
 Follow-up TODOs:
   - TODO(CI_SHA_PINS): pin GitHub Actions steps to full commit SHAs in ci.yml.
@@ -23,14 +22,15 @@ SmartNews SmartFormat v2.1 rules in `validate.py`, invoked from root
 or add orchestration that belongs in caller workflows.
 
 **Rationale**: Callers compose this action alongside their own CI. Scope creep
-in a pinned `@v1` dependency breaks external pipelines silently.
+in a pinned major-version tag breaks external pipelines silently.
 
 ### II. Public API Stability
 
 Inputs and outputs declared in `action.yml` are a public contract. Removing or
 renaming an existing input or output is a BREAKING CHANGE and MUST trigger a
 semver MAJOR bump. Adding optional inputs with defaults is backward-compatible
-(MINOR). Callers pin to `@v1`; breaking that tag silently is unacceptable.
+(MINOR). Callers pin to a major-version tag; breaking that tag silently is
+unacceptable.
 
 **Rationale**: External RSS pipelines depend on stable input names and output
 semantics they do not control.
@@ -72,8 +72,9 @@ gate for feed-validation logic consumed by third parties.
 All commits to `main` MUST follow Conventional Commits with scopes matching
 changed components (`validate`, `action`, `ci`, `docs`). `feat:` bumps MINOR,
 `fix:` bumps PATCH, `feat!:` / `BREAKING CHANGE:` bumps MAJOR. Release-please
-automation MUST NOT be bypassed. Manual tagging or force-pushing version tags
-is prohibited.
+automation MUST NOT be bypassed. Manual tagging by contributors or agents is
+prohibited; the automated release workflow MAY update floating major-version
+tags as documented in `CONTRIBUTING.md`.
 
 **Rationale**: Automated changelogs and semver accuracy depend on commit
 discipline. This is a public repo — consumers read the changelog.
@@ -99,10 +100,11 @@ CI workflows in this repository MUST operate using only the built-in
 `permissions` MUST be least-privilege (`contents: read` for CI; release jobs
 may require `contents: write` / `pull-requests: write` as already declared).
 
-Callers MUST be able to run `uses: blavity/smartformat-validate-action@v1`
-with only their feed URLs — no Blavity-internal secrets.
+Callers MUST be able to run this action with only their feed URLs and the
+default `GITHUB_TOKEN` available in the caller workflow — no host-organization
+secrets.
 
-**Rationale**: Public, forkable action. Invisible org-only dependencies break
+**Rationale**: Public, forkable action. Invisible host-only dependencies break
 external adoption.
 
 ### IX. Organizational Information Confidentiality
@@ -111,22 +113,23 @@ No artifact committed to this repository — including source code,
 documentation, scripts, agent instructions, specs, plans, and this
 constitution — MAY reference, describe, infer, or otherwise expose:
 
-- Internal processes, workflows, fleet tooling, or catalog systems of any host
-  organization (e.g. Backstage, org-catalog assemblers, managed-repos
-  inventory, internal issue/epic trackers in commit messages or user-facing
-  docs).
-- Organizational policies, internal URLs, or governance bundles not meant for
-  public readers.
-- Internal metadata files (`catalog-info.yaml`, `.governance/`, agent bundle
-  sync outputs) that register this repo in a host organization's private
-  fleet graph.
+- Internal processes, workflows, or tooling of any host organization.
+- Organizational policies, standards, or internal URLs that are not publicly
+  documented.
+- Trade secrets, proprietary methods, or competitive information belonging to
+  any organization using this action.
+- Personally identifiable information of employees, contractors, or teams
+  beyond what is already public (e.g. a public GitHub username on a commit).
+- Private registration, inventory, or policy-sync metadata intended only for
+  a host organization's internal tooling.
 
 Guidance, examples, and documentation MUST be written generically so any
 organization adopting this action needs no context about the originating
 organization.
 
-**Rationale**: This repository is public and forkable. Internal fleet
-machinery belongs in private/platform repos — not in the OSS action tree.
+**Rationale**: This repository is public and forkable. Documentation or tooling
+that embeds host-specific context leaks internal information and reduces the
+action's utility to the broader community.
 
 ### X. Own the Codebase
 
@@ -142,7 +145,8 @@ silently ignored.
 
 Every commit MUST be pushed; release-please PRs MUST be merged promptly after
 their triggering feature lands. Merging a PR is not shipping until the
-release tag and floating `v1` tag reflect the change (see `CONTRIBUTING.md`).
+release tag and floating major-version tag reflect the change (see
+`CONTRIBUTING.md`).
 
 Agents MUST run `git status` after every commit and resolve unpushed state
 before ending a session.
@@ -156,6 +160,8 @@ same PR when behavior or contributor workflow changes.
   `action.yml` descriptions.
 - Breaking changes MUST include a migration note in the PR description.
 - Documentation MUST NOT reference internal systems (Principle IX).
+- Introducing repository governance docs (`AGENTS.md`, this constitution) MUST
+  cross-reference them from `CONTRIBUTING.md`.
 
 ## Security & Supply Chain
 
@@ -174,8 +180,8 @@ same PR when behavior or contributor workflow changes.
 - **Always run local checks** before proposing a PR:
   `uv run ruff check validate.py tests/ && uv run ruff format --check validate.py tests/ && uv run pytest tests/ -v`
 - **Lockfiles**: commit `uv.lock` atomically with `pyproject.toml` changes.
-- **Public repo awareness**: no `.env`, tokens, internal hostnames, or fleet
-  metadata files.
+- **Public repo awareness**: no `.env`, tokens, internal hostnames, or private
+  registration metadata.
 - **No org-specific context** in any committed artifact (Principle IX).
 - **Agent directories are gitignored**: `.claude/`, `.codex/`, `.opencode/`,
   and `.specify/**` except `memory/constitution.md` MUST NOT be committed.
@@ -189,7 +195,8 @@ same PR when behavior or contributor workflow changes.
 - `action.yml` input/output changes MUST state Principle II impact and semver
   bump type.
 - New runtime Python dependencies MUST include Principle VII justification.
-- Agents MUST NOT force-push.
+- Agents MUST NOT force-push branches; automated release workflows MAY update
+  floating major-version tags per `CONTRIBUTING.md`.
 
 ## Governance
 
@@ -201,6 +208,6 @@ wins. Amend this constitution first to resolve genuine conflicts.
 1. Open a PR changing this file.
 2. State version bump type (MAJOR/MINOR/PATCH) and rationale.
 3. At least one maintainer MUST approve before merge.
-4. Update `CONSTITUTION_VERSION` and ratification date in the same commit.
+4. Update the `Version` and `Last Amended` footer lines in the same commit.
 
 **Version**: 1.0.0 | **Ratified**: 2026-09-12 | **Last Amended**: 2026-09-12
