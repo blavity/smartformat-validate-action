@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- release-please-start-changelog -->
 
+## [1.1.1](https://github.com/blavity/smartformat-validate-action/compare/v1.1.0...v1.1.1) (2026-09-13)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump pytest from 9.0.2 to 9.0.3 ([#6](https://github.com/blavity/smartformat-validate-action/issues/6)) ([d9b0dde](https://github.com/blavity/smartformat-validate-action/commit/d9b0dde808a4cc8333e3c83f30e0bc03fc2c1706))
+* **lint:** replace flake8 with ruff for lint and format ([abbe478](https://github.com/blavity/smartformat-validate-action/commit/abbe478475499799f9630bfd3589cbb2c9739a28))
+
 ## [1.1.0](https://github.com/blavity/smartformat-validate-action/compare/v1.0.0...v1.1.0) (2026-03-12)
 
 
