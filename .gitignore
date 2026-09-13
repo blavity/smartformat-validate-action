@@ -19,3 +19,10 @@ coverage.xml
 .idea/
 .vscode/
 *.swp
+
+# Agent working dirs — constitution is the only committed .specify artifact
+.claude/
+.codex/
+.opencode/
+.specify/**
+!.specify/memory/constitution.md

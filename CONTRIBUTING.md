@@ -1,5 +1,11 @@
 # Contributing
 
+## Governance
+
+This public repository is governed by `.specify/memory/constitution.md`.
+Agents and contributors MUST read it before making changes. `AGENTS.md`
+summarizes the agent workflow. When guidance conflicts, the constitution wins.
+
 ## Development
 
 ### Prerequisites
